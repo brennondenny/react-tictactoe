@@ -6,11 +6,11 @@ import calculateWinner from "./calculate-winner";
 function getStatus(squares, xIsNext) {
   const winner = calculateWinner(squares);
   if (winner) {
-    return `Winner: ${winner}`;
+    return `${winner} Wins!`;
   } else if (squares.every(Boolean)) {
-    return `Scratch: Cat's game`;
+    return `Tie Game!`;
   } else {
-    return `Next player: ${xIsNext ? "X" : "0"}`;
+    return `Next Turn: ${xIsNext ? "X" : "0"}`;
   }
 }
 
@@ -31,9 +31,7 @@ function gameReducer(state, action) {
       };
     }
     default: {
-      throw new Error(
-        `Unhandled action type: ${action.type}. Please fix it. Thank you.`,
-      );
+      throw new Error(`Unhandled action type: ${action.type}`);
     }
   }
 }
@@ -60,33 +58,31 @@ function Board() {
   const status = getStatus(squares, xIsNext);
 
   return (
-    <div>
-      <div className="status">{status}</div>
-      <div className="board-row">
-        {renderSquare(0)}
-        {renderSquare(1)}
-        {renderSquare(2)}
-      </div>
-      <div className="board-row">
-        {renderSquare(3)}
-        {renderSquare(4)}
-        {renderSquare(5)}
-      </div>
-      <div className="board-row">
-        {renderSquare(6)}
-        {renderSquare(7)}
-        {renderSquare(8)}
+    <div className="game">
+      <div>{status}</div>
+      <div className="game-zone">
+        <div className="board-row">
+          {renderSquare(0)}
+          {renderSquare(1)}
+          {renderSquare(2)}
+        </div>
+        <div className="board-row">
+          {renderSquare(3)}
+          {renderSquare(4)}
+          {renderSquare(5)}
+        </div>
+        <div className="board-row">
+          {renderSquare(6)}
+          {renderSquare(7)}
+          {renderSquare(8)}
+        </div>
       </div>
     </div>
   );
 }
 
 function Game() {
-  return (
-    <div className="game">
-      <Board />
-    </div>
-  );
+  return <Board />;
 }
 
 ReactDOM.render(<Game />, document.getElementById("root"));
