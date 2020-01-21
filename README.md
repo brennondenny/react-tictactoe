@@ -1,10 +1,10 @@
-#❌ react-tictactoe ⭕
+# ❌ react-tictactoe ⭕
 
 Simple Tic-Tac-Toe game built using React Hooks
 
 ![Game Demo](./docs/game.gif)
 
-##Getting Started
+## Getting Started
 
 ### `yarn start`
 
